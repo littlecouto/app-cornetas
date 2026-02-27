@@ -1,9 +1,18 @@
 "use client";
 
 import { ReactNode, useCallback, useMemo, useState } from "react";
-import { League, Match, SimulatorMatch, TableResults, Team } from "@/types";
+import {
+  League,
+  Match,
+  SimulatorMatch,
+  TableResults,
+  TableRow,
+  Team,
+} from "@/types";
 import { SimulatorContext } from "./context";
 import { SimulatorContextType } from "./types";
+import { MobileTable } from "@/components/mobile/MobileTable";
+import { DesktopTable } from "@/components/desktop/DesktopTable";
 
 type SimulatorProviderProps = {
   children: ReactNode;
@@ -117,6 +126,75 @@ export function SimulatorProvider(props: SimulatorProviderProps) {
     });
   }, [teams, simulator]);
 
+  const table: TableRow[] = useMemo(() => {
+    const rows = results.map((row) => {
+      const points = row.wins * 3 + row.draws + row.points;
+      const goalsDiff = row.goals - row.goalsAgainst;
+      const winRate = Math.floor((points / (row.matches * 3)) * 100);
+
+      return {
+        ...row,
+        points,
+        goalsDiff,
+        winRate,
+        color: "gray",
+      };
+    });
+    rows.sort((a, b): number => {
+      if (a.points < b.points) {
+        return 10;
+      }
+      if (a.points > b.points) {
+        return -10;
+      }
+
+      if (a.wins < b.wins) {
+        return 9;
+      }
+      if (a.wins > b.wins) {
+        return -9;
+      }
+
+      if (a.goalsDiff < b.goalsDiff) {
+        return 8;
+      }
+      if (a.goalsDiff > b.goalsDiff) {
+        return -8;
+      }
+
+      if (a.goals < b.goals) {
+        return 7;
+      }
+      if (a.goals > b.goals) {
+        return -7;
+      }
+
+      return 0;
+    });
+
+    if (props.data.league.format === "paulista-2026") {
+      rows.slice(0, 8).map((item) => {
+        item.color = "green";
+      });
+      rows.slice(-2).map((item) => {
+        item.color = "red";
+      });
+    } else if (props.data.league.format === "league") {
+      rows.slice(0, 4).map((item) => {
+        item.color = "green";
+      });
+      rows[4].color = "blue";
+      rows.slice(5, 11).map((item) => {
+        item.color = "orange";
+      });
+      rows.slice(-4).map((item) => {
+        item.color = "red";
+      });
+    }
+
+    return rows;
+  }, [results]);
+
   const matchSimulate = useCallback(
     (matchId: number, homeGoal: string, awayGoal: string) => {
       let match = simulator.find((match) => match.matchId === matchId);
@@ -146,6 +224,7 @@ export function SimulatorProvider(props: SimulatorProviderProps) {
     results,
     simulator,
     matchSimulate,
+    table,
     league: props.data.league,
   };
 

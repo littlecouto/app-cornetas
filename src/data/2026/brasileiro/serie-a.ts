@@ -288,10 +288,10 @@ const matches: Match[] = [
     time: "19:00",
     homeId: 262,
     awayId: 285,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 1,
+    awayGoal: 1,
     stadium: "Maracanã",
-    started: false,
+    started: true,
   },
 
   {
@@ -302,10 +302,10 @@ const matches: Match[] = [
     time: "19:00",
     homeId: 280,
     awayId: 282,
-    homeGoal: 0,
+    homeGoal: 1,
     awayGoal: 0,
     stadium: "Cícero de Souza Marques",
-    started: false,
+    started: true,
   },
 
   {
@@ -316,10 +316,10 @@ const matches: Match[] = [
     time: "20:00",
     homeId: 277,
     awayId: 276,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 1,
+    awayGoal: 1,
     stadium: "Vila Belmiro",
-    started: false,
+    started: true,
   },
 
   {
@@ -330,10 +330,10 @@ const matches: Match[] = [
     time: "20:00",
     homeId: 364,
     awayId: 2305,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 2,
+    awayGoal: 2,
     stadium: "Mangueirão",
-    started: false,
+    started: true,
   },
 
   {
@@ -344,10 +344,10 @@ const matches: Match[] = [
     time: "21:30",
     homeId: 275,
     awayId: 287,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 5,
+    awayGoal: 1,
     stadium: "Arena Barueri",
-    started: false,
+    started: true,
   },
 
   {
@@ -358,10 +358,10 @@ const matches: Match[] = [
     time: "21:30",
     homeId: 284,
     awayId: 263,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 5,
+    awayGoal: 3,
     stadium: "Arena do Grêmio",
-    started: false,
+    started: true,
   },
 
   {
@@ -372,10 +372,10 @@ const matches: Match[] = [
     time: "19:00",
     homeId: 265,
     awayId: 266,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 1,
+    awayGoal: 1,
     stadium: "Casa de Apostas Arena Fonte Nova",
-    started: false,
+    started: true,
   },
 
   {
@@ -386,10 +386,10 @@ const matches: Match[] = [
     time: "20:00",
     homeId: 267,
     awayId: 315,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 1,
+    awayGoal: 1,
     stadium: "São Januário",
-    started: false,
+    started: true,
   },
 
   {
@@ -400,10 +400,10 @@ const matches: Match[] = [
     time: "21:30",
     homeId: 283,
     awayId: 294,
-    homeGoal: 0,
-    awayGoal: 0,
+    homeGoal: 1,
+    awayGoal: 2,
     stadium: "Mineirão",
-    started: false,
+    started: true,
   },
 
   {

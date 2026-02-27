@@ -1,12 +1,32 @@
-import { TableRow } from "@/types";
 import useMediaQuery from "@/utils/useMediaQuery";
+import { useSimulator } from "@/context/simulator/hooks";
+import { ReactNode } from "react";
 
-type DesktopTableProps = {
-  table: TableRow[];
+type TablePositionProps = {
+  children: ReactNode;
+  color: string;
 };
 
-export function DesktopTable(props: DesktopTableProps) {
+function TablePosition(props: TablePositionProps) {
+  const colorVariants: { [key: string]: string } = {
+    blue: "text-blue-500",
+    red: "text-red-500",
+    orange: "text-orange-500",
+    green: "text-green-500",
+    gray: "text-gray-500",
+  };
+
+  return (
+    <td className={`table-cell-position ${colorVariants[props.color]}`}>
+      {props.children}
+    </td>
+  );
+}
+
+export function DesktopTable() {
   const isMobile = useMediaQuery((width) => width <= 950);
+  const { table } = useSimulator();
+
   return (
     <div className="results-table">
       <table>
@@ -27,13 +47,11 @@ export function DesktopTable(props: DesktopTableProps) {
         </thead>
 
         <tbody>
-          {props.table.map((result, index) => (
+          {table.map((result, index) => (
             <tr key={result.team.id}>
-              <td
-                className={`table-cell-position text-${result.color || "gray"}-500`}
-              >
+              <TablePosition color={result.color || "gray"}>
                 {index + 1}°
-              </td>
+              </TablePosition>
               <td className="table-cell-team">
                 {isMobile ? (
                   <div className="table-cell-team-image">

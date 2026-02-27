@@ -732,10 +732,10 @@ const matches: Match[] = [
     time: "20:30",
     homeId: 264,
     awayId: 3316,
-    homeGoal: 0,
+    homeGoal: 3,
     awayGoal: 0,
     stadium: "Neo Química Arena",
-    started: false,
+    started: true,
   },
   {
     id: 1049,

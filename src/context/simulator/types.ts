@@ -3,6 +3,7 @@ import type {
   Match,
   SimulatorMatch,
   TableResults,
+  TableRow,
   Team,
 } from "@/types";
 
@@ -21,4 +22,6 @@ export type SimulatorContextType = {
 
   nextRound: () => void;
   backRound: () => void;
+
+  table: TableRow[];
 };

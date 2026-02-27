@@ -5,12 +5,10 @@ import {
   TableHead,
   TableHeader,
 } from "@/components/ui/table";
+import { useSimulator } from "@/context/simulator/hooks";
 
-type MobileTableProps = {
-  table: TableRow[];
-};
-
-export function MobileTable(props: MobileTableProps) {
+export function MobileTable() {
+  const { table } = useSimulator();
   return (
     <div className="results-table">
       <div className="dual-table">
@@ -25,7 +23,7 @@ export function MobileTable(props: MobileTableProps) {
             </TableHeader>
 
             <TableBody>
-              {props.table.map((result, index) => (
+              {table.map((result, index) => (
                 <tr key={result.team.id}>
                   <td
                     className={`table-cell-position text-${result.color || "gray"}-500`}
@@ -61,7 +59,7 @@ export function MobileTable(props: MobileTableProps) {
             </thead>
 
             <tbody>
-              {props.table.map((result) => (
+              {table.map((result) => (
                 <tr key={result.team.id}>
                   <td>{result.matches}</td>
                   <td>{result.wins}</td>
